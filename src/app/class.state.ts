@@ -43,11 +43,9 @@ export class ClassState {
 
   @Action(Class.Rename)
   rename(ctx: ClassContext, action: Class.Rename) {
-    const state = ctx.getState();
-    const records = [...state.allClass];
+    const records = [...ctx.getState().allClass];
 
     const idx = records.findIndex(v => v.id === action.payload.id);
-
     if(idx >= 0) {
       const record = {...records[idx]};
       record.name = action.payload.newName;
